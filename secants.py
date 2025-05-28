@@ -91,9 +91,12 @@ class secants():
                 idx1 = np.ravel(idx1)
                 idx2 = np.ravel(idx2)
             else:
-                # Randomly sample.
-                idx1 = self.rng.integers(0,numEx,numSamples)
-                idx2 = self.rng.integers(0,numEx,numSamples)
+                # Randomly sample the secant manifold.
+                idx = self.rng.permutation(numEx*numEx)
+                idx = idx[:numSamples]
+                
+                idx1 = (idx/numEx).astype(int)
+                idx2 = np.mod(idx,numEx).astype(int)
                 
             # Now compute secants.
             numPairs = len(idx1)
