@@ -53,8 +53,8 @@ class secants():
                         idx = self.rng.permutation(numEx_class1*numEx_class2)
                         idx = idx[:numSamples]
                         
-                        idx1 = (idx/numEx_class1).astype(int)
-                        idx2 = np.mod(idx,numEx_class1).astype(int)
+                        idx1 = np.mod(idx,numEx_class1).astype(int)
+                        idx2 = (idx/numEx_class1).astype(int)
                     
                     # Get total number of pairs we are using.
                     numPairs = len(idx1) 
@@ -94,9 +94,9 @@ class secants():
                 # Randomly sample the secant manifold.
                 idx = self.rng.permutation(numEx*numEx)
                 idx = idx[:numSamples]
-                
-                idx1 = (idx/numEx).astype(int)
-                idx2 = np.mod(idx,numEx).astype(int)
+
+                idx1 = np.mod(idx,numEx).astype(int)
+                idx2 = (idx/numEx).astype(int)
                 
             # Now compute secants.
             numPairs = len(idx1)
